@@ -78,7 +78,7 @@ const Banner = () => {
                 {
                     bannerSliderData.map(banner => (
                         <motion.div
-                            className={`card h-[75vh] w-full bg-cover bg-center bg-no-repeat flex items-center`}
+                            className={`card h-[75vh] w-full bg-cover object-fill bg-center bg-no-repeat flex items-center`}
                             key={currentSlide}
                             initial="hidden"
                             animate="visible"

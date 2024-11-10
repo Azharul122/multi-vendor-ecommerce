@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { BiMobile, BiSolidLogIn, BiX } from 'react-icons/bi'
-import { LiaPhoneSolid } from 'react-icons/lia'
+import { MouseEvent, useEffect, useState } from 'react'
+import { BiMobile, BiSolidLogIn, BiSolidTime, BiX } from 'react-icons/bi'
+import { LiaMinusSolid, LiaPhoneSolid, LiaPlusSolid, LiaTimesSolid } from 'react-icons/lia'
 import { SiShopee, SiTheirishtimes, SiTraccar } from 'react-icons/si'
 import { Link, useLocation } from 'react-router-dom'
 import MainContainer from '../../components/user/containers/MainContainer'
@@ -9,12 +9,16 @@ import { TfiBag, TfiSearch } from 'react-icons/tfi'
 import { TiTimes, TiTimesOutline } from 'react-icons/ti'
 import { FaTimes } from 'react-icons/fa'
 import Search from '../../pages/user/search/Search'
+import WishListModal from '../../components/ui/WishListModal'
+import CartModal from '../../components/ui/CartModal'
 
 const Header = () => {
   const [query, setQuery] = useState("")
   const orders: never[] = []
   const [isScrolly, setIsScrolly] = useState(false)
   const location = useLocation()
+  const [modalShow, setModalShow] = useState<boolean>(false)
+  const [isWishlistOpen, setIsWishListOpen] = useState<boolean>(false)
 
 
   useEffect(() => {
@@ -42,6 +46,16 @@ const Header = () => {
   }
 
 
+  const handleAddToCart = (e: MouseEvent<SVGElement, MouseEvent>) => {
+    e.preventDefault()
+    setModalShow(!modalShow)
+    setIsWishListOpen(false)
+  }
+  const handleWishList = (e: MouseEvent<SVGElement, MouseEvent>) => {
+    e.preventDefault()
+    setIsWishListOpen(!isWishlistOpen)
+    setModalShow(false)
+  }
 
 
   return (
@@ -94,13 +108,13 @@ const Header = () => {
               <BsMoon className='text-xl cursor-pointer' />
               <div className="flex items-center gap-5">
                 <div className="relative">
-                  <TfiBag className='text-xl cursor-pointer' />
+                  <TfiBag onBlur={() => setModalShow(!modalShow)} onClick={(e) => handleAddToCart(e)} className='text-xl cursor-pointer' />
                   <div className="absolute -top-2  -right-2  bg-[rgba(0,0,0,0.4)] rounded-full flex justify-center items-center size-5">
                     0
                   </div>
                 </div>
                 <div className="relative">
-                  <BsHeart className='text-xl cursor-pointer ' />
+                  <BsHeart onClick={(e) => handleWishList(e)} className='text-xl cursor-pointer ' />
                   <div className="absolute -top-2  -right-2  bg-[rgba(0,0,0,0.4)] rounded-full flex justify-center items-center size-5">
                     0
                   </div>
@@ -112,6 +126,21 @@ const Header = () => {
           </div>
         </MainContainer>
       </div>
+
+      {/* Modal cart*/}
+
+      {
+        modalShow && (
+          <CartModal open={modalShow} isOpen={setModalShow}/>
+        )
+      }
+      {/* Modal wishlisht*/}
+
+      {
+        isWishlistOpen && (
+          <WishListModal open={isWishlistOpen} isOpen={setIsWishListOpen}/>
+        )
+      }
 
     </div>
   )

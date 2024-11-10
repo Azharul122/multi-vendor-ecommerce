@@ -11,6 +11,7 @@ import SellerHome from './pages/seller/SellerHome/SellerHome.tsx'
 import Shop from './pages/user/Shop/Shop.tsx'
 import ProductDetails from './pages/user/ProductDetails/ProductDetails.tsx'
 import NotFound from './components/ui/NotFound.tsx'
+import Login from './pages/Login.tsx'
 
 const router = createBrowserRouter(
   [
@@ -55,6 +56,10 @@ const router = createBrowserRouter(
     {
       path: '*',
       element:<NotFound/>
+    },
+    {
+      path: '/login',
+      element:<Login/>
     },
 
 
