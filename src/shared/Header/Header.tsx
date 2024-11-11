@@ -1,8 +1,8 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import React, { MouseEvent, useEffect, useState } from 'react'
 import { BiMobile, BiSolidLogIn, BiSolidTime, BiX } from 'react-icons/bi'
 import { LiaMinusSolid, LiaPhoneSolid, LiaPlusSolid, LiaTimesSolid } from 'react-icons/lia'
 import { SiShopee, SiTheirishtimes, SiTraccar } from 'react-icons/si'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import MainContainer from '../../components/user/containers/MainContainer'
 import { BsHeart, BsMoon, BsSun } from 'react-icons/bs'
 import { TfiBag, TfiSearch } from 'react-icons/tfi'
@@ -17,6 +17,7 @@ const Header = () => {
   const orders: never[] = []
   const [isScrolly, setIsScrolly] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
   const [modalShow, setModalShow] = useState<boolean>(false)
   const [isWishlistOpen, setIsWishListOpen] = useState<boolean>(false)
 
@@ -40,10 +41,27 @@ const Header = () => {
   }, []);
 
 
-  const nevigateSearchPage = () => {
-
-    return <Search query={query} />
+  const handleSearchSubmit = (e:MouseEvent<SVGElement, globalThis.MouseEvent>) => {
+    e.preventDefault()
+    // navigate(`/search?query=${query}`,{state:"q"})
+    navigate(`/search?query=${query}`)
+    setQuery("")
   }
+
+
+  const handleSearchEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    
+    
+    if(e.key=="Enter"){
+      e.preventDefault()
+      navigate(`/search?query=${query}`)
+      setQuery("")
+      
+    }
+
+  }
+
+
 
 
   const handleAddToCart = (e: MouseEvent<SVGElement, MouseEvent>) => {
@@ -90,16 +108,16 @@ const Header = () => {
             </div>
 
             {/* Search */}
-            <div className="relative">
-              <input value={query} onKeyDown={() => nevigateSearchPage()} onChange={(e) => setQuery(e.target.value)} type="text" className='px-5 py-1 outline-none bg-[rgba(0,0,0,0.2)] rounded-full border-slate-700' />
+            <form className="relative"  >
+              <input value={query} type="text" className='px-5 py-1 outline-none bg-[rgba(0,0,0,0.2)] rounded-full border-slate-700' onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearchEnter}/>
               <div className="absolute flex items-center gap-2 top-1/2 right-3 -translate-y-1/2">
                 {
-                  query && <BiX className='text-2xl ' onClick={() => setQuery("")} />
+                  query && <BiX className='text-2xl' onClick={() => setQuery("")} />
                 }
-                <TfiSearch className='text-lg' />
+                <TfiSearch className='text-lg' onClick={ handleSearchSubmit} />
 
               </div>
-            </div>
+            </form>
 
             {/* Right side */}
             <div className="flex gap-3 md:gap-2  items-center">
@@ -131,14 +149,14 @@ const Header = () => {
 
       {
         modalShow && (
-          <CartModal open={modalShow} isOpen={setModalShow}/>
+          <CartModal open={modalShow} isOpen={setModalShow} />
         )
       }
       {/* Modal wishlisht*/}
 
       {
         isWishlistOpen && (
-          <WishListModal open={isWishlistOpen} isOpen={setIsWishListOpen}/>
+          <WishListModal open={isWishlistOpen} isOpen={setIsWishListOpen} />
         )
       }
 

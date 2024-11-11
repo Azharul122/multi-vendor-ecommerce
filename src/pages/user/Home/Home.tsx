@@ -4,6 +4,8 @@ import FeaturedProducts from '../../../components/user/featuredProducts/Featured
 import TrandingProducts from '../../../components/user/TrandingProducts/TrandingProducts'
 import CategoryGallery from '../../../components/user/CategoryGallery/CategoryGallery'
 import BsetSeller from '../BsetSeller/BsetSeller'
+import OurPartners from '../../../components/user/Partner/OurPartners'
+import News from '../../../components/user/News/News'
 
 const Home = () => {
   
@@ -20,6 +22,12 @@ const Home = () => {
 
       {/* Best seller */}
       <BsetSeller/>
+
+      {/* Our Partners */}
+      <OurPartners/>
+
+      {/* News */}
+      <News/>
     </div>
   )
 }

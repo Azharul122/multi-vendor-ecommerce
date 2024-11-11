@@ -12,6 +12,8 @@ import Shop from './pages/user/Shop/Shop.tsx'
 import ProductDetails from './pages/user/ProductDetails/ProductDetails.tsx'
 import NotFound from './components/ui/NotFound.tsx'
 import Login from './pages/Login.tsx'
+import SignUp from './pages/SignUp.tsx'
+import Search from './pages/user/search/Search.tsx'
 
 const router = createBrowserRouter(
   [
@@ -30,6 +32,10 @@ const router = createBrowserRouter(
         {
           path:"/products/:id",
           element:<ProductDetails/>
+        },
+        {
+          path:"/search",
+          element:<Search/>
         }
       ]
     },
@@ -60,6 +66,10 @@ const router = createBrowserRouter(
     {
       path: '/login',
       element:<Login/>
+    },
+    {
+      path: '/signup',
+      element:<SignUp/>
     },
 
 

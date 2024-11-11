@@ -175,15 +175,12 @@ const TrandingProducts = () => {
                     </div>
                 </MainContainer>
 
-
-
             </div>
 
 
             {/* carousel product modal */}
 
             <CarouselProductModal product={singleProduct ? singleProduct : null} open={open} setOpen={setOpen} />
-
 
 
         </div>
