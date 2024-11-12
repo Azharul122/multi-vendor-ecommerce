@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ourBrands } from '../../../constance';
 import MainContainer from '../containers/MainContainer';
+import Title from '../../ui/Title';
 
 
 const OurPartners = () => {
@@ -50,10 +51,11 @@ const OurPartners = () => {
     return (
         <div className='py-8'>
             <MainContainer>
-                <div className="relative w-max">
+                {/* <div className="relative w-max">
                     <span className='absolute right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span>
                     <p className="uppercase md:text-2xl text-xl">Our Partners</p>
-                </div>
+                </div> */}
+                <Title title='Our Partners'/>
                 <div className="slider-container overflow-hidden pt-5">
                     <Slider {...settings}>
                         {

@@ -11,6 +11,7 @@ import Aos from 'aos'
 import "react-multi-carousel/lib/styles.css";
 import { BsCart, BsEye, BsHeart } from 'react-icons/bs'
 import Rating from '../Rating/Rating'
+import Title from '../../ui/Title'
 
 
 const FeaturedProducts = () => {
@@ -81,15 +82,16 @@ const FeaturedProducts = () => {
             </MainContainer> */}
 
 
-<div className="bg-[#FBF7F2] py-10 relative  overflow-hidden">
+<div className=" py-10 relative  overflow-hidden">
                 {/*  */}
 
                 <MainContainer>
                     <div className="flex items-center justify-between pb-3">
-                        <div className="relative">
+                        {/* <div className="relative">
                             <p className="uppercase md:text-2xl text-xl">POPULAR Products</p>
                             <span className='absolute right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span>
-                        </div>
+                        </div> */}
+                        <Title title='Featured products'/>
                         <div className="flex gap-4 items-center">
                             <button
                                 disabled={currentSlide <= 0}

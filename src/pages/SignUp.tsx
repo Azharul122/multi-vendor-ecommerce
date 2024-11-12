@@ -1,5 +1,6 @@
 import { LiaGithub, LiaGoogle } from "react-icons/lia"
 import { Link } from "react-router-dom"
+import Title from "../components/ui/Title"
 
 
 const SignUp = () => {
@@ -7,9 +8,10 @@ const SignUp = () => {
   return (
     <div className='w-full h-screen flex justify-center items-center bg-[url(https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)] z-10'>
       <div className="shadow-[0_0_15px_rgba(0,0,0,0.25)] drop-shadow-xl max-w-[30rem] md:w-[23rem] sm:w-[20rem] w-full mx-auto p-3 z-50 bg-[rgba(255,255,255,0.7)]">
-        <div className="relative  w-max">
+        {/* <div className="relative  w-max">
           <p className="uppercase md:text-2xl text-xl  ">Signup  <span className='absolute  right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span> </p>
-        </div>
+        </div> */}
+        <Title title="signup"/>
         <form className='flex flex-col gap-4 pt-3 '>
           {/* 1st row */}
           <div className="grid grid-cols-2 gap-2 items-center w-full">

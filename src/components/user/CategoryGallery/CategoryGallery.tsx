@@ -1,6 +1,7 @@
 import React from 'react'
 import MainContainer from '../containers/MainContainer'
 import { useNavigate } from 'react-router-dom'
+import Title from '../../ui/Title'
 
 const CategoryGallery = () => {
     const navigate = useNavigate()
@@ -8,13 +9,14 @@ const CategoryGallery = () => {
         <div className='py-5'>
             <MainContainer>
                 {/* Title */}
-                <div className="pb-5 w-max">
+                {/* <div className="pb-5 w-max">
                     <p className=" relative uppercase md:text-2xl text-xl">Category <span className='absolute right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span></p>
 
-                </div>
+                </div> */}
+                <Title title='Category' className='pb-5'/>
 
                 {/* Gallery */}
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 h-[400px]">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 h-[400px] pt-5">
                     {/* Item1 */}
                     <div className="row-span-1 col-span-2 relative group overflow-hidden cursor-pointer" onClick={() => navigate("/abc")}>
                         <img

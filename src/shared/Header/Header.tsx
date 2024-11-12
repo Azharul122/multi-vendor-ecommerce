@@ -1,14 +1,11 @@
 import React, { MouseEvent, useEffect, useState } from 'react'
-import { BiMobile, BiSolidLogIn, BiSolidTime, BiX } from 'react-icons/bi'
-import { LiaMinusSolid, LiaPhoneSolid, LiaPlusSolid, LiaTimesSolid } from 'react-icons/lia'
-import { SiShopee, SiTheirishtimes, SiTraccar } from 'react-icons/si'
+import { BiMobile, BiSolidLogIn, BiX } from 'react-icons/bi'
+import { LiaPhoneSolid } from 'react-icons/lia'
+import { SiShopee, SiTraccar } from 'react-icons/si'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import MainContainer from '../../components/user/containers/MainContainer'
 import { BsHeart, BsMoon, BsSun } from 'react-icons/bs'
 import { TfiBag, TfiSearch } from 'react-icons/tfi'
-import { TiTimes, TiTimesOutline } from 'react-icons/ti'
-import { FaTimes } from 'react-icons/fa'
-import Search from '../../pages/user/search/Search'
 import WishListModal from '../../components/ui/WishListModal'
 import CartModal from '../../components/ui/CartModal'
 
@@ -41,7 +38,7 @@ const Header = () => {
   }, []);
 
 
-  const handleSearchSubmit = (e:MouseEvent<SVGElement, globalThis.MouseEvent>) => {
+  const handleSearchSubmit = (e: MouseEvent<SVGElement, globalThis.MouseEvent>) => {
     e.preventDefault()
     // navigate(`/search?query=${query}`,{state:"q"})
     navigate(`/search?query=${query}`)
@@ -50,13 +47,13 @@ const Header = () => {
 
 
   const handleSearchEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    
-    
-    if(e.key=="Enter"){
+
+
+    if (e.key == "Enter") {
       e.preventDefault()
       navigate(`/search?query=${query}`)
       setQuery("")
-      
+
     }
 
   }
@@ -64,16 +61,62 @@ const Header = () => {
 
 
 
-  const handleAddToCart = (e: MouseEvent<SVGElement, MouseEvent>) => {
+  const handleAddToCart = (e: MouseEvent<SVGElement, globalThis.MouseEvent>) => {
     e.preventDefault()
     setModalShow(!modalShow)
     setIsWishListOpen(false)
   }
-  const handleWishList = (e: MouseEvent<SVGElement, MouseEvent>) => {
+  const handleWishList = (e: MouseEvent<SVGElement, globalThis.MouseEvent>) => {
     e.preventDefault()
     setIsWishListOpen(!isWishlistOpen)
     setModalShow(false)
   }
+
+
+  // Theme
+  const [theme, setTheme] = useState("light")
+  const [loading, setLoading] = useState<boolean>(true);
+  const handleToggleTheme = (event: React.MouseEvent<SVGElement, globalThis.MouseEvent>) => {
+    event.preventDefault()
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark")); 
+
+    // if (theme == "dark") {
+    //   setTheme("light")
+    // }
+    // if (theme == "light") {
+    //   setTheme("dark")
+    // }
+    
+
+  }
+
+ 
+
+  useEffect(() => {
+    const getCurrentTheme = localStorage.getItem("theme")
+    console.log(getCurrentTheme)
+    if (getCurrentTheme) {
+      setTheme(getCurrentTheme) 
+    }
+    setLoading(false)
+  }, [])
+
+
+  useEffect(()=>{
+    if(loading) return
+    if (theme == "dark") {
+      
+      document.body.classList.add("dark")
+      document.body.classList.remove("light")
+    }
+    else {
+
+      document.body.classList.add("light")
+      document.body.classList.remove("dark")
+    }
+
+    localStorage.setItem("theme", theme)
+  },[theme])
 
 
   return (
@@ -109,12 +152,12 @@ const Header = () => {
 
             {/* Search */}
             <form className="relative"  >
-              <input value={query} type="text" className='px-5 py-1 outline-none bg-[rgba(0,0,0,0.2)] rounded-full border-slate-700' onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearchEnter}/>
+              <input value={query} type="text" className='px-5 py-1 outline-none bg-[rgba(0,0,0,0.2)] rounded-full border-slate-700' onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearchEnter} />
               <div className="absolute flex items-center gap-2 top-1/2 right-3 -translate-y-1/2">
                 {
                   query && <BiX className='text-2xl' onClick={() => setQuery("")} />
                 }
-                <TfiSearch className='text-lg' onClick={ handleSearchSubmit} />
+                <TfiSearch className='text-lg' onClick={handleSearchSubmit} />
 
               </div>
             </form>
@@ -122,8 +165,15 @@ const Header = () => {
             {/* Right side */}
             <div className="flex gap-3 md:gap-2  items-center">
               <TfiSearch className=' text-xl cursor-pointer' />
-              <BsSun className='text-xl cursor-pointer' />
-              <BsMoon className='text-xl cursor-pointer' />
+              {
+                theme == "dark" ? (
+                  <BsSun onClick={handleToggleTheme} className='text-xl cursor-pointer' />
+
+                ) : (
+                  <BsMoon onClick={handleToggleTheme} className='text-xl cursor-pointer' />
+
+                )
+              }
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <TfiBag onBlur={() => setModalShow(!modalShow)} onClick={(e) => handleAddToCart(e)} className='text-xl cursor-pointer' />

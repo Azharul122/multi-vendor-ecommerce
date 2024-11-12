@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Title from '../components/ui/Title'
 
 const Login = () => {
     const required = {
@@ -10,9 +11,10 @@ const Login = () => {
     return (
         <div className='w-full h-screen flex justify-center items-center bg-white z-10'>
             <div className="shadow-[0_0_15px_rgba(0,0,0,0.25)] drop-shadow-xl max-w-[30rem] md:w-[23rem] sm:w-[20rem] w-full mx-auto p-3 z-50 bg-[rgba(255,255,255,0.7)]">
-                <div className="relative  w-max">
+                {/* <div className="relative  w-max">
                     <p className="uppercase md:text-2xl text-xl  ">Login  <span className='absolute  right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span> </p>
-                </div>
+                </div> */}
+                <Title title='login'/>
                 <form className='flex flex-col gap-4 pt-3'>
                     <div className="flex flex-col gap-1">
                         <p>Email</p>

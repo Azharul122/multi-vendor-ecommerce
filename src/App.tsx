@@ -9,7 +9,7 @@ import Footer from './shared/Footer/Footer'
 
 function App() {
   return (
-    <div className="">
+    <div className="dark:bg-black dark:text-white text-black">
       <header>
         <Header />
       </header>
