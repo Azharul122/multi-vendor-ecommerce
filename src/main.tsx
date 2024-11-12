@@ -14,6 +14,7 @@ import NotFound from './components/ui/NotFound.tsx'
 import Login from './pages/Login.tsx'
 import SignUp from './pages/SignUp.tsx'
 import Search from './pages/user/search/Search.tsx'
+import NewsDetails from './pages/user/NewsDetails/NewsDetails.tsx'
 
 const router = createBrowserRouter(
   [
@@ -36,7 +37,11 @@ const router = createBrowserRouter(
         {
           path:"/search",
           element:<Search/>
-        }
+        },
+        {
+          path:"/news/:id",
+          element:<NewsDetails/>
+        },
       ]
     },
     {

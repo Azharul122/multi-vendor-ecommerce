@@ -7,9 +7,6 @@ import { News, Product } from '../../../types'
 import ProductsCard from '../../../components/ui/ProductsCard'
 import NewsCard from '../../../components/user/NewsCard/NewsCard'
 
-interface searchProps {
-  query: string
-}
 
 const Search = () => {
 
@@ -29,16 +26,14 @@ const Search = () => {
       const searchNews = siteNews.filter(news => news.author == query || news.category.includes(query) || news.description.includes(query) || news.tags.includes(query) || news.description.includes(query))
       setSearchNews(searchNews)
     }
-  }, [searchProducts,searchNews])
-
-
-
+  }, [searchProducts, searchNews, query])
 
 
   return (
     <div className='py-5'>
 
       <MainContainer>
+        {/* Product */}
         <Title title={`Search result for "${query}"`} />
         <div className="pt-4 grid gap-3 md:grid-cols-4 sm:grid-cols-2 grid-cols-1">
           {
@@ -60,7 +55,6 @@ const Search = () => {
           {
             searchNews.length > 0 ? (
               searchNews.map(news => (
-                // <ProductsCard product={product} />
                 <NewsCard news={news}/>
               ))
             ) : (<div className="">

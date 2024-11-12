@@ -1,15 +1,16 @@
 import React from 'react'
 import { News } from '../../../types'
+import { Link } from 'react-router-dom'
 
-interface props{
-  news:News
+interface props {
+  news: News
 }
 
-const NewsCard = ({news}:props) => {
-const {image,tags,title,author,authorImage,date,description,category,id,url}=news
+const NewsCard = ({ news }: props) => {
+  const { image, tags, title, author, authorImage, date, description, category, id, url } = news
 
   return (
-    <div className={`card relative border mx-3  flex flex-col gap-1 group z-10 cursor-pointer  `} key={id} >
+    <Link to={`/news/${id}`} className={`card relative border mx-3  flex flex-col gap-1 group z-10 cursor-pointer `} key={id} >
       {/*  Image */}
       <div className="w-full h-[150px] overflow-hidden group-hover:bg-[rgba(0,0,0,0.4)]">
         <img src={image} className='size-full group-hover:scale-125 transition-all duration-500 object-fill' alt={""} />
@@ -20,7 +21,7 @@ const {image,tags,title,author,authorImage,date,description,category,id,url}=new
         {/* title  */}
         <p className='text-lg '>{title}</p>
         {/* Description */}
-        <div className="flex items-center space-x-2 text-sm">
+        <div className="flex items-center space-x-2 text-sm ">
           <div className="p">
             {description.length > 50 ? (
               <p>
@@ -50,7 +51,7 @@ const {image,tags,title,author,authorImage,date,description,category,id,url}=new
       </div>
 
 
-    </div>
+    </Link>
   )
 }
 
