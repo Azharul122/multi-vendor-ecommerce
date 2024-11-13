@@ -10,8 +10,8 @@ interface props{
 const WishListModal = ({isOpen,open}:props) => {
 
   return (
-    <div className={`fixed  h-[100vh] z-[70] w-[450px] top-0 ${open ? "left-0" : "-left-full"}  transition-all duration-1000 ease-in-out`}>
-            <div className="relative h-screen bg-white bg-opacity-80 p-5">
+    <div className={`fixed  h-[100vh] z-[70] w-full sm:w-[400px] md:w-[550px] lg:w-[650px] top-0 ${open ? "left-0" : "-left-full"}  transition-all duration-1000 ease-in-out`}>
+            <div className="relative h-screen bg-white bg-opacity-80 text-black/70 dark:bg-black dark:text-white/70 p-5">
               {/* top */}
               <p className='sticky w-full py-2 border-b border-gray-500'>Cart</p>
 
@@ -40,7 +40,7 @@ const WishListModal = ({isOpen,open}:props) => {
               </div>
 
               {/* Fixed part */}
-              <div className="sticky bottom-0 left-0 py-2 px-3 border-t border-gray-500 w-full flex justify-between items-center">
+              <div className="sticky bottom-0 left-0 py-2  border-t border-gray-500 w-full flex justify-between items-center">
                 <div className="coupon flex flex-col gap-2">
                   <input type="text" className='py-1 outline-none bg-transparent border border-gray-500 px-2' />
                   <button className='px-3 py-1 border border-gray-500 w-max'>Apply coupon</button>

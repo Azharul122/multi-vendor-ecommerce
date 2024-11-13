@@ -9,12 +9,12 @@ const Login = () => {
         password: false
     }
     return (
-        <div className='w-full h-screen flex justify-center items-center bg-white z-10'>
-            <div className="shadow-[0_0_15px_rgba(0,0,0,0.25)] drop-shadow-xl max-w-[30rem] md:w-[23rem] sm:w-[20rem] w-full mx-auto p-3 z-50 bg-[rgba(255,255,255,0.7)]">
+        <div className='w-full h-screen flex justify-center items-center dark:bg-black z-10'>
+            <div className="shadow-[0_0_5px_rgba(0,0,0,0.25)] dark:shadow-[0_0_15px_rgba(255,255,255,0.50)] drop-shadow-xl max-w-[30rem] md:w-[23rem] sm:w-[20rem] w-full mx-auto p-3 z-50 dark:bg-[rgba(0,0,0,0.7)] bg-[rgba(255,255,255,0.7)] dark:text-white relative">
                 {/* <div className="relative  w-max">
                     <p className="uppercase md:text-2xl text-xl  ">Login  <span className='absolute  right-0 -bottom-[2px] h-[1px] bg-green-700 w-[50px]'></span> </p>
                 </div> */}
-                <Title title='login'/>
+                <Title title='login' />
                 <form className='flex flex-col gap-4 pt-3'>
                     <div className="flex flex-col gap-1">
                         <p>Email</p>
@@ -52,6 +52,11 @@ const Login = () => {
                 </form>
                 <div className="mt-3">
                     <Link to={"/signup"} className='text-sm '>Dont't have account? <span className='text-green-500'>Create Now</span></Link>
+                </div>
+
+                {/* design */}
+                <div className="absolute top-2 right-2 h-7 w-8 ">
+                    <img src="/login-3d.png" alt="" className='size-full object-fill rotate-[20deg]' />
                 </div>
             </div>
         </div>

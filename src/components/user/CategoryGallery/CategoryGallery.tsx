@@ -18,7 +18,7 @@ const CategoryGallery = () => {
                 {/* Gallery */}
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 h-[400px] pt-5">
                     {/* Item1 */}
-                    <div className="row-span-1 col-span-2 relative group overflow-hidden cursor-pointer" onClick={() => navigate("/abc")}>
+                    <div className="row-span-1 col-span-2 relative group overflow-hidden cursor-pointer" onClick={() => navigate(`/shop?category=laptop`)}>
                         <img
                             className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                             src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -31,7 +31,7 @@ const CategoryGallery = () => {
 
                     </div>
 
-                    <div className="row-span-1 col-span-1 relative group overflow-hidden cursor-pointer">
+                    <div className="row-span-1 col-span-1 relative group overflow-hidden cursor-pointer" onClick={() => navigate(`/shop?category=camera`)}>
                         <img
                             className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                             src="https://www.startech.com.bd/image/cache/catalog/digital-camera/sony/alpha-a6400/alpha-a6400-1-500x500.jpg"
@@ -44,7 +44,7 @@ const CategoryGallery = () => {
                         </div>
                     </div>
 
-                    <div className="row-span-2 col-span-1 relative group overflow-hidden cursor-pointer">
+                    <div className="row-span-2 col-span-1 relative group overflow-hidden cursor-pointer" onClick={() => navigate(`/shop?category=mobile`)}>
                         <img
                             className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                             src="https://www.startech.com.bd/image/cache/catalog/mobile/zte/nubia-z60-ultra/nubia-z60-ultra-black-500x500.webp"
@@ -57,7 +57,7 @@ const CategoryGallery = () => {
                         </div>
                     </div>
 
-                    <div className="row-span-1 col-span-1 relative group overflow-hidden cursor-pointer">
+                    <div className="row-span-1 col-span-1 relative group overflow-hidden cursor-pointer" onClick={() => navigate(`/shop?category=smart-watch`)}>
                         <img
                             className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                             src="https://www.startech.com.bd/image/cache/catalog/smart-watch/colmi/p28-plus/p28-plus-black-500x500.webp"
@@ -70,7 +70,7 @@ const CategoryGallery = () => {
                         </div>
                     </div>
 
-                    <div className="row-span-1 col-span-2 relative group overflow-hidden cursor-pointer">
+                    <div className="row-span-1 col-span-2 relative group overflow-hidden cursor-pointer" onClick={() => navigate(`/shop?category=earbuds`)}>
                         <img
                             className="w-full h-full object-fill group-hover:scale-110 transition duration-300"
                             src="https://images.pexels.com/photos/3921847/pexels-photo-3921847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

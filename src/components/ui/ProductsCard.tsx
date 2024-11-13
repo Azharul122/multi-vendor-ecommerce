@@ -18,8 +18,8 @@ const ProductsCard = ({ product,marginX }: props) => {
 
 
 
-    const handleRedirect = (event: React.MouseEvent<SVGElement, MouseEvent>, id: string) => {
-        event.preventDefault()
+    const handleRedirect = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, id: number) => {
+        e.preventDefault()
         navigate(`/products/${id}`)
 
     }

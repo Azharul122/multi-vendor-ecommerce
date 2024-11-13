@@ -11,6 +11,10 @@ const NewsDetails = () => {
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
     const [newsData, setNewsData] = useState<News | undefined>(undefined)
+    const [viewCount, setViewCount] = useState<number>(100)
+
+  
+
     useEffect(() => {
         try {
             setLoading(true)
@@ -36,9 +40,9 @@ const NewsDetails = () => {
     return (
         <div className='py-7'>
             <MainContainer>
-                <div className="flex gap-4">
+                <div className="md:flex-row flex flex-col gap-4 ">
                     {/* right */}
-                    <div className="w-[65%]">
+                    <div className="md:w-[65%] w-full md:mb-0 mb-4">
                         <div className="flex items-center gap-2 flex-wrap pb-2">
                             {
                                 newsData?.tags.map((tag, index) => (
@@ -66,7 +70,7 @@ const NewsDetails = () => {
                             </div>
 
                             {/*  */}
-                            <div className="flex items-center gap-2"><BsEye/> <span>3500</span></div>
+                            <div className="flex items-center gap-2"><BsEye /> <span>{viewCount}</span></div>
                         </div>
 
                         {/* Image */}
@@ -76,7 +80,7 @@ const NewsDetails = () => {
                     </div>
 
                     {/* .........Right sidebar........ */}
-                    <div className="w-[35%] border-b ">
+                    <div className="md:w-[35%] border-b w-full">
                         {/* title */}
                         <div className="relative w-full">
                             <button className='px-3 py-1 bg-[rgba(255,255,255,0.5)] z-10 border relative'> Latest News</button>
